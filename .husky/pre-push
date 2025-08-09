@@ -7,7 +7,7 @@ echo "🚀 Running pre-push checks..."
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
 # Check if pushing to main/master branch
-if [ "$current_branch" = "main" ] || [ "$current_branch" = "master" ]; then
+if [ "$current_branch" = "main" ] || [ "$current_branch" = "develop" ]; then
     echo "❌ Direct pushes to $current_branch branch are not allowed!"
     echo "💡 Please create a feature branch and use a pull request:"
     echo "   git checkout -b feature/your-feature-name"
