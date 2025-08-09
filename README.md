@@ -71,6 +71,33 @@ Run TypeScript type checking:
 pnpm run type-check
 ```
 
+## Git Hooks
+
+This project uses Husky to enforce code quality through git hooks:
+
+### Pre-commit Hook
+
+Runs automatically before each commit:
+
+- **Auto-formats** staged files with Prettier
+- **Auto-fixes** ESLint issues where possible
+- **Non-blocking** - commits proceed even if some issues remain
+
+### Pre-push Hook
+
+Runs automatically before each push:
+
+- **Blocks pushes to main branch** - encourages feature branches and PRs
+- **Blocks unformatted code** - ensures consistent formatting
+- **Blocks ESLint errors** - allows warnings but prevents errors
+
+### Recommended Workflow
+
+1. Work on feature branches: `git checkout -b feature/your-feature`
+2. Make commits (pre-commit will auto-format)
+3. Push to feature branch: `git push origin feature/your-feature`
+4. Create pull request to develop
+
 ## Project Structure
 
 ```
@@ -125,6 +152,7 @@ To add a new ShadCN/UI component:
 ### Available Components
 
 Currently installed ShadCN/UI components:
+
 - `Card` - For displaying content in a structured format
 - `Button` - Interactive button component with variants
 
@@ -149,6 +177,7 @@ Currently installed ShadCN/UI components:
 To enhance your development experience, install these VS Code extensions:
 
 ### Essential Extensions
+
 - **ES7+ React/Redux/React-Native snippets** - JavaScript and React code snippets
 - **TypeScript Importer** - Automatically imports TypeScript definitions
 - **Tailwind CSS IntelliSense** - Intelligent autocomplete for Tailwind classes
@@ -156,6 +185,7 @@ To enhance your development experience, install these VS Code extensions:
 - **ESLint** - JavaScript linting and error detection
 
 ### Additional Helpful Extensions
+
 - **Auto Rename Tag** - Automatically rename paired HTML/JSX tags
 - **Bracket Pair Colorizer** - Colorize matching brackets
 - **GitLens** - Enhanced Git capabilities
@@ -166,7 +196,7 @@ To enhance your development experience, install these VS Code extensions:
 Comprehensive guides for each major library used in this project:
 
 - **[ShadCN/UI Guide](./docs/shadcn-ui.md)** - Components, variants, and customization
-- **[TanStack Router Guide](./docs/tanstack-router.md)** - Type-safe routing and navigation  
+- **[TanStack Router Guide](./docs/tanstack-router.md)** - Type-safe routing and navigation
 - **[TanStack Query Guide](./docs/tanstack-query.md)** - Data fetching and caching
 - **[Tailwind CSS Guide](./docs/tailwind-css.md)** - Utility classes and responsive design
 - **[Axios Guide](./docs/axios.md)** - HTTP client and API integration
