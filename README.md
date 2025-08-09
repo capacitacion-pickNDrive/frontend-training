@@ -144,10 +144,37 @@ Currently installed ShadCN/UI components:
 - `/` - Home page displaying posts from the API
 - `/about` - Information about the project and technologies used
 
+## Recommended VS Code Extensions
+
+To enhance your development experience, install these VS Code extensions:
+
+### Essential Extensions
+- **ES7+ React/Redux/React-Native snippets** - JavaScript and React code snippets
+- **TypeScript Importer** - Automatically imports TypeScript definitions
+- **Tailwind CSS IntelliSense** - Intelligent autocomplete for Tailwind classes
+- **Prettier - Code formatter** - Automatic code formatting
+- **ESLint** - JavaScript linting and error detection
+
+### Additional Helpful Extensions
+- **Auto Rename Tag** - Automatically rename paired HTML/JSX tags
+- **Bracket Pair Colorizer** - Colorize matching brackets
+- **GitLens** - Enhanced Git capabilities
+- **Path Intellisense** - File path autocomplete
+
+## Library Documentation
+
+Comprehensive guides for each major library used in this project:
+
+- **[ShadCN/UI Guide](./docs/shadcn-ui.md)** - Components, variants, and customization
+- **[TanStack Router Guide](./docs/tanstack-router.md)** - Type-safe routing and navigation  
+- **[TanStack Query Guide](./docs/tanstack-query.md)** - Data fetching and caching
+- **[Tailwind CSS Guide](./docs/tailwind-css.md)** - Utility classes and responsive design
+- **[Axios Guide](./docs/axios.md)** - HTTP client and API integration
+
 ## Development Notes
 
 - The application uses file-based routing with TanStack Router
-- API calls are cached for 5 minutes to reduce unnecessary requests
+- API calls use default TanStack Query caching behavior
 - All components are built with accessibility in mind
 - The project follows React and TypeScript best practices
 - Code is organized in a modular, maintainable structure
