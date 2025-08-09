@@ -1,0 +1,44 @@
+#!/bin/sh
+# Pre-push hook to prevent problematic pushes
+
+echo "🚀 Running pre-push checks..."
+
+# Get the current branch name
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Check if pushing to main/master branch
+if [ "$current_branch" = "main" ] || [ "$current_branch" = "master" ]; then
+    echo "❌ Direct pushes to $current_branch branch are not allowed!"
+    echo "💡 Please create a feature branch and use a pull request:"
+    echo "   git checkout -b feature/your-feature-name"
+    echo "   git push origin feature/your-feature-name"
+    echo ""
+    echo "🔧 To bypass this check (only if you know what you're doing):"
+    echo "   git push --no-verify"
+    exit 1
+fi
+
+# Check code formatting
+echo "🎨 Checking code formatting..."
+if ! pnpm run format:check; then
+    echo "❌ Code is not properly formatted!"
+    echo "💡 Run the following command to fix formatting:"
+    echo "   pnpm run format"
+    echo ""
+    echo "🔧 To bypass this check:"
+    echo "   git push --no-verify"
+    exit 1
+fi
+
+# Check for ESLint errors (warnings are allowed)
+echo "🔍 Checking for ESLint errors..."
+if ! pnpm run lint; then
+    echo "❌ ESLint errors found!"
+    echo "💡 Fix the errors above or run 'pnpm run lint' to auto-fix them"
+    echo ""
+    echo "🔧 To bypass this check:"
+    echo "   git push --no-verify"
+    exit 1
+fi
+
+echo "✅ All pre-push checks passed! 🎉"

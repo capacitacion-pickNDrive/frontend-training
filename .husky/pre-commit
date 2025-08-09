@@ -1,0 +1,10 @@
+#!/bin/sh
+# Lightweight pre-commit hook
+# Auto-formats and fixes code without blocking commits
+
+echo "🔄 Running pre-commit checks..."
+
+# Run lint-staged for auto-formatting and fixing
+pnpm exec lint-staged
+
+echo "✅ Pre-commit checks completed!"
