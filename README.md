@@ -172,24 +172,15 @@ Currently installed ShadCN/UI components:
 - `/` - Home page displaying posts from the API
 - `/about` - Information about the project and technologies used
 
-## Recommended VS Code Extensions
+## Recommended Extensions
 
 To enhance your development experience, install these VS Code extensions:
 
 ### Essential Extensions
 
-- **ES7+ React/Redux/React-Native snippets** - JavaScript and React code snippets
-- **TypeScript Importer** - Automatically imports TypeScript definitions
 - **Tailwind CSS IntelliSense** - Intelligent autocomplete for Tailwind classes
 - **Prettier - Code formatter** - Automatic code formatting
 - **ESLint** - JavaScript linting and error detection
-
-### Additional Helpful Extensions
-
-- **Auto Rename Tag** - Automatically rename paired HTML/JSX tags
-- **Bracket Pair Colorizer** - Colorize matching brackets
-- **GitLens** - Enhanced Git capabilities
-- **Path Intellisense** - File path autocomplete
 
 ## Library Documentation
 
