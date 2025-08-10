@@ -1,4 +1,4 @@
-## 🎯 Task Title
+# 🎯 [Task Title]
 
 <!-- Provide a clear, concise title for this task/feature -->
 
