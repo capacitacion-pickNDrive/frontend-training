@@ -27,16 +27,7 @@
 
 - [ ] I have tested my changes locally
 - [ ] My changes don't break existing functionality
-- [ ] I have added appropriate comments to complex code sections
 - [ ] I have checked there are no errors on the console
-
-## 🔗 Related Links
-
-<!-- Link to related issues, tickets, or documentation -->
-
-- Fixes #(issue number)
-- Related to #(issue number)
-- Documentation: [link]
 
 ## 🤔 Additional Context
 
