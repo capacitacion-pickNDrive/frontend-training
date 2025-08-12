@@ -2,10 +2,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 
 export const AboutPage = () => {
   return (
-    <div className="container mx-auto p-4 max-w-3xl">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold tracking-tight">About Frontend Training</h1>
-        <p className="text-muted-foreground">Learn about this project and the technologies used</p>
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      {/* Hero Section */}
+      <div className="text-center mb-12">
+        <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-medium mb-4">
+          <span className="w-2 h-2 bg-secondary rounded-full"></span>
+          Learn More
+        </div>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+          About Frontend Training
+        </h1>
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Learn about this project and the technologies used.
+        </p>
       </div>
 
       <div className="grid gap-6">
