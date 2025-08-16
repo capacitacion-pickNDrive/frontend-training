@@ -9,7 +9,7 @@ export const AboutPage = () => {
           <span className="w-2 h-2 bg-secondary rounded-full"></span>
           Learn More
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-5xl font-mono tracking-tight mb-4 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
           About Frontend Training
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

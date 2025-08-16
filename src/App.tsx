@@ -1,30 +1,38 @@
+// src/App.tsx
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ListaTareas from './components/ui/ListaTareas'
+import FormularioTarea from '@/components/ui/FormularioTarea'
+import fondoCalendarion from './clendario-reflejos-de-luz.jpg'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [mostrarFormulario, setMostrarFormulario] = useState(false)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount(count => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    <div
+      className="min-h-screen flex flex-col items-center"
+      style={{
+        backgroundImage: `url(${fondoCalendarion})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <main className="p-6 max-w-xl w-full bg-white/80 rounded shadow mt-6">
+        <h1 className="text-2xl font-mono mb-4 text-center">📋 Lista de Tareas</h1>
+
+        <div className="text-center mb-4">
+          <button
+            onClick={() => setMostrarFormulario(!mostrarFormulario)}
+            className="bg-yellow-500 text-white px-4 py-2 rounded"
+          >
+            {mostrarFormulario ? 'Cerrar formulario' : 'Nueva Tarea'}
+          </button>
+        </div>
+
+        {mostrarFormulario && <FormularioTarea />}
+        <ListaTareas />
+      </main>
+    </div>
   )
 }
 

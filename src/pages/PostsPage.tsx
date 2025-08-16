@@ -44,7 +44,7 @@ export const PostsPage = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold tracking-tight text-primary">Posts</h1>
+        <h1 className="text-3xl font-mono tracking-tight text-primary">Posts</h1>
         <p className="text-muted-foreground">
           Displaying {posts?.length || 0} posts from the JSONPlaceholder API
         </p>

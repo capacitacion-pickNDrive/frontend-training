@@ -5,7 +5,7 @@ export const Route = createRootRoute({
   component: () => (
     <>
       <div className="p-4 flex gap-4 border-b bg-background">
-        <h1 className="text-xl font-semibold text-primary">Frontend Training</h1>
+        <h1 className="text-xl font-semibold text-primary">Organizador Diario</h1>
         <div className="flex gap-2 ml-auto">
           <Link
             to="/"
