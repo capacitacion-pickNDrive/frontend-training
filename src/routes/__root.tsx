@@ -19,6 +19,12 @@ export const Route = createRootRoute({
           >
             About
           </Link>
+          <Link
+            to="/tasks"
+            className="px-3 py-2 rounded hover:bg-accent [&.active]:bg-primary [&.active]:text-primary-foreground"
+          >
+            Tasks
+          </Link>
         </div>
       </div>
       <Outlet />

@@ -1,9 +1,9 @@
 import axios from 'axios'
-import type { Post } from '@/types/api'
+import type { Post, TaskResponse } from '@/types/api'
 
 // Base API configuration
 const api = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
+  baseURL: 'http://localhost:1337/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -24,6 +24,10 @@ export const apiService = {
     const response = await api.get<Post>(`/posts/${id}`)
     return response.data
   },
+}
+
+export const getTasks = (): Promise<TaskResponse> => {
+  return api.get('/tasks');
 }
 
 // Export the axios instance for custom requests if needed
