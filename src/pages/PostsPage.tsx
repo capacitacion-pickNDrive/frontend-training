@@ -48,6 +48,7 @@ export const PostsPage = () => {
         <p className="text-muted-foreground">
           Displaying {posts?.length || 0} posts from the JSONPlaceholder API
         </p>
+        <div className="mb-4 h-[300px] bg-amber-700">hols</div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -61,6 +62,8 @@ export const PostsPage = () => {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground line-clamp-3">{post.body}</p>
+              <Button>Hola soy boton</Button>
+              <button>Hola soy boton</button>
             </CardContent>
           </Card>
         ))}
