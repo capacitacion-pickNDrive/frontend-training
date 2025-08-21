@@ -7,4 +7,12 @@ echo "🔄 Running pre-commit checks..."
 # Run lint-staged for auto-formatting and fixing
 pnpm exec lint-staged
 
+# Check if build passes
+echo "🏗️ Checking if build passes..."
+if ! pnpm run build; then
+    echo "❌ Build failed!"
+    echo "💡 Fix the build errors before committing"
+    exit 1
+fi
+
 echo "✅ Pre-commit checks completed!"
