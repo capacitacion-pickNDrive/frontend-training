@@ -43,21 +43,26 @@
 
 :root {
   --radius: 0.625rem;
+  --brand-primary: 183 97% 35%; /* #026f82 */
+  --brand-primary-dark: 183 97% 25%; /* A darker shade for hover */
+  --brand-primary-light: 183 97% 90%; /* A lighter shade for backgrounds */
+  --brand-secondary: 33 95% 54%; /* #FA9719 */
+  --brand-secondary-light: 33 95% 90%; /* A lighter shade for backgrounds */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: hsl(var(--brand-primary));
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
+  --secondary: hsl(var(--brand-secondary));
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: oklch(0.677 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
@@ -83,9 +88,9 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
+  --primary: hsl(var(--brand-primary-light));
   --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
+  --secondary: hsl(var(--brand-secondary-light));
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
