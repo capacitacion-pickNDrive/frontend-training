@@ -1,9 +1,9 @@
 import axios from 'axios'
-import type { Post } from '@/types/api'
+import type { Post, TaskAttrs, StrapiListResponse, StrapiSingleResponse } from '@/types/api'
 
 // Base API configuration
 const api = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
+  baseURL: 'http://localhost:1337', //'https://jsonplaceholder.typicode.com',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -22,6 +22,14 @@ export const apiService = {
   // Fetch a single post by ID
   getPost: async (id: number): Promise<Post> => {
     const response = await api.get<Post>(`/posts/${id}`)
+    return response.data
+  },
+  getTareas: async (): Promise<StrapiListResponse<TaskAttrs>> => {
+    const response = await api.get<StrapiListResponse<TaskAttrs>>('/tareas')
+    return response.data
+  },
+  getTarea: async (id: number): Promise<StrapiSingleResponse<TaskAttrs>> => {
+    const response = await api.get<StrapiSingleResponse<TaskAttrs>>(`/tareas/${id}`)
     return response.data
   },
 }
