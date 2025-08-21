@@ -31,6 +31,9 @@ export default function PlaygroundPage() {
       <div className="space-y-6">
         <div>
           <h2 className="text-xl font-semibold mb-4">Buttons</h2>
+          <div className="size-20 rounded-full bg-blue-500 p-2 flex items-center justify-center">
+            2
+          </div>
           <div className="flex gap-2 flex-wrap">
             <Button>Default</Button>
             <Button variant="secondary">Secondary</Button>
@@ -169,12 +172,7 @@ export default function PlaygroundPage() {
           <h2 className="text-xl font-semibold mb-4">Cards</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
             <Card>
-              <CardHeader>
-                <CardTitle>Simple Card</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>This is a simple card with just content.</p>
-              </CardContent>
+              <CardHeader>Hola</CardHeader>
             </Card>
 
             <Card>
