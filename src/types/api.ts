@@ -10,16 +10,11 @@ export interface Task {
   title: string
   description: string
   completed: boolean
+  category: Category
 }
 
-export interface TaskResponse {
-  tasks: Task[]
-  meta: {
-    pagination: {
-      page: number;
-      pageSize: number;
-      pageCount: number;
-      total: number;
-    };
-  };
+export interface Category {
+  id: number
+  name: string
+  color: string
 }

@@ -2,12 +2,14 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button'
 import { useTasks } from '@/hooks/useTasks';
+import { useCategories } from '@/hooks/useCategories';
 
 export const TasksPage = () => {
+    
+  const { data: tasks, tasksLoading, tasksError, taskRefetch } = useTasks()
+  const { data: categ, categLoading, categError, categRefetch } = useCategories()
 
-    const { data: tasks, isLoading, error, refetch } = useTasks()
-
-    if (isLoading) {
+    if (tasksLoading || categLoading) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center min-h-[400px]">
@@ -20,7 +22,7 @@ export const TasksPage = () => {
     )
   }
 
-  if (error) {
+  if (tasksError || categError) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center justify-center min-h-[400px] gap-6">
@@ -32,7 +34,7 @@ export const TasksPage = () => {
             <p className="text-muted-foreground max-w-md">{error.message}</p>
           </div>
           <Button
-            onClick={() => refetch()}
+            onClick={() => taskRefetch()}
             variant="default"
             className="bg-primary hover:bg-primary/90"
           >
@@ -43,13 +45,12 @@ export const TasksPage = () => {
     )
     }
 
-    console.log(tasks);
     return (
     <div className="container mx-auto p-4">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold tracking-tight text-primary">Posts</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-primary">Tasks</h1>
         <p className="text-muted-foreground">
-          Displaying {tasks?.length || 0} posts from the JSONPlaceholder API
+          Displaying {tasks?.length || 0} Tasks
         </p>
       </div>
 
@@ -59,12 +60,17 @@ export const TasksPage = () => {
             <CardHeader>
               <CardTitle className="line-clamp-2">{task.title}</CardTitle>
               <CardDescription>
-                Task #{task.id}
+                ID: {task.id}
                 <p className="text-sm text-muted-foreground line-clamp-3">{task.description}</p>
               </CardDescription>
             </CardHeader>
             <CardContent>
+              <div>
+                Category: {<span style={{ color: task.category.color }}>{task.category.name}</span>}
+              </div>
+              <div>
                 {task.completed ? <span>Completed</span> : <span>Pending</span>}
+              </div>
             </CardContent>
           </Card>
         ))}
@@ -72,7 +78,7 @@ export const TasksPage = () => {
 
       {tasks && tasks.length === 0 && (
         <div className="text-center py-8">
-          <p className="text-muted-foreground">No posts found</p>
+          <p className="text-muted-foreground">No Tasks found</p>
         </div>
       )}
     </div>
