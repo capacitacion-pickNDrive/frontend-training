@@ -9,7 +9,7 @@ export interface Task {
   id: number
   title: string
   description: string
-  complete: boolean
+  completed: boolean
 }
 
 export interface TaskResponse {

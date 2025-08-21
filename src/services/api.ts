@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { Post, TaskResponse } from '@/types/api'
+import type { Post, Task } from '@/types/api'
 
 // Base API configuration
 const api = axios.create({
@@ -24,10 +24,11 @@ export const apiService = {
     const response = await api.get<Post>(`/posts/${id}`)
     return response.data
   },
-}
 
-export const getTasks = (): Promise<TaskResponse> => {
-  return api.get('/tasks');
+  getTasks: async (): Promise<Task[]> => {
+    const response = await api.get('/tasks')
+    return response.data.data
+  }
 }
 
 // Export the axios instance for custom requests if needed
