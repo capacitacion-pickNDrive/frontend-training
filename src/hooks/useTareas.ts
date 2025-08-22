@@ -35,8 +35,8 @@ export const useTareas = () => {
 export const useEliminarTarea = () => {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: async (id: number) => {
-      await axios.delete(`http://localhost:1337/api/tareas/${id}`)
+    mutationFn: async (documentId: string) => {
+      await axios.delete(`http://localhost:1337/api/tareas/${documentId}`)
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tareas'] }),
   })
@@ -59,7 +59,7 @@ export const useCambiarEstadoTarea = () => {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: async ({ id, completada }: { id: number; completada: boolean }) => {
-      await axios.patch(`http://localhost:1337/api/tareas/${id}`, { data: { completada } })
+      await axios.post(`http://localhost:1337/api/tareas/${id}`, { data: { completada } })
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tareas'] }),
     onError: error => console.error('Error al cambiar estado de tarea:', error),

@@ -12,8 +12,7 @@ const api = axios.create({
 
 // API endpoints
 export const apiService = {
-  // Fetch all posts from the API
-  // To change the API endpoint, modify the URL below
+  // Fetch all posts
   getPosts: async (): Promise<Post[]> => {
     const response = await api.get<Post[]>('/posts')
     return response.data
@@ -23,6 +22,12 @@ export const apiService = {
   getPost: async (id: number): Promise<Post> => {
     const response = await api.get<Post>(`/posts/${id}`)
     return response.data
+  },
+
+  // Delete product by documentId
+  deletePost: async (documentId: string) => {
+    const { data } = await api.delete(`/posts/${documentId}`)
+    return data
   },
 }
 

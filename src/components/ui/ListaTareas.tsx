@@ -1,6 +1,7 @@
 import { useTareas, useEliminarTarea, useCambiarEstadoTarea } from '@/hooks/useTareas'
 
 export default function ListaTareas() {
+  // Hooks en la raíz del componente ✅
   const { data: tareas, isLoading, isError } = useTareas()
   const { mutate: eliminarTarea, isPending: eliminando } = useEliminarTarea()
   const { mutate: cambiarEstado, isPending: cambiandoEstado } = useCambiarEstadoTarea()
@@ -9,23 +10,24 @@ export default function ListaTareas() {
   if (isError) return <p className="text-red-500">Error al cargar tareas</p>
   if (!tareas || tareas.length === 0) return <p>No hay tareas disponibles</p>
 
-  const handleEliminar = (tareaId: number) => {
+  // Función normal, solo llama al hook que ya declaraste arriba
+  const handleEliminar = (documentId: string) => {
     if (window.confirm('¿Seguro que querés eliminar esta tarea?')) {
-      console.log('Eliminando tarea con ID:', tareaId)
-      eliminarTarea(tareaId)
+      console.log('Eliminando tarea con ID:', documentId)
+      eliminarTarea(documentId)
     }
   }
 
-  const handleCambiarEstado = (tareaId: number, estadoActual: boolean | null) => {
+  const handleCambiarEstado = (documentId: string, estadoActual: boolean | null) => {
     const nuevoEstado = !estadoActual
-    console.log('Cambiando estado de tarea:', tareaId, 'de', estadoActual, 'a', nuevoEstado)
-    cambiarEstado({ id: tareaId, completada: nuevoEstado })
+    console.log('Cambiando estado de tarea:', documentId, 'de', estadoActual, 'a', nuevoEstado)
+    cambiarEstado({ documentId, completada: nuevoEstado })
   }
 
   return (
     <ul className="space-y-2">
       {tareas.map(tarea => (
-        <li key={tarea.id} className="border p-3 rounded shadow">
+        <li key={tarea.documentId} className="border p-3 rounded shadow">
           <div className="flex justify-between items-center">
             <h2 className="font-semibold">{tarea.titulo}</h2>
             <span
@@ -47,7 +49,7 @@ export default function ListaTareas() {
 
           <div className="flex gap-2 mt-2">
             <button
-              onClick={() => handleCambiarEstado(tarea.id, tarea.completada)}
+              onClick={() => handleCambiarEstado(tarea.documentId, tarea.completada)}
               disabled={cambiandoEstado}
               className={`px-2 py-1 text-black rounded text-xs ${
                 cambiandoEstado
@@ -63,7 +65,7 @@ export default function ListaTareas() {
             </button>
 
             <button
-              onClick={() => handleEliminar(tarea.id)}
+              onClick={() => handleEliminar(tarea.documentId)}
               className="text-red-600 text-xs hover:underline disabled:text-gray-400"
               disabled={eliminando}
             >
