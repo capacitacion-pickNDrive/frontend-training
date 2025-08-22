@@ -4,6 +4,7 @@ import axios from 'axios'
 export interface Categoria {
   id: number
   nombre: string
+  type: string
 }
 
 export interface Tarea {

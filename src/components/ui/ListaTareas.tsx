@@ -1,7 +1,6 @@
 import { useTareas, useEliminarTarea, useCambiarEstadoTarea } from '@/hooks/useTareas'
 
 export default function ListaTareas() {
-  // Hooks en la raíz del componente ✅
   const { data: tareas, isLoading, isError } = useTareas()
   const { mutate: eliminarTarea, isPending: eliminando } = useEliminarTarea()
   const { mutate: cambiarEstado, isPending: cambiandoEstado } = useCambiarEstadoTarea()
@@ -10,17 +9,14 @@ export default function ListaTareas() {
   if (isError) return <p className="text-red-500">Error al cargar tareas</p>
   if (!tareas || tareas.length === 0) return <p>No hay tareas disponibles</p>
 
-  // Función normal, solo llama al hook que ya declaraste arriba
   const handleEliminar = (documentId: string) => {
     if (window.confirm('¿Seguro que querés eliminar esta tarea?')) {
-      console.log('Eliminando tarea con ID:', documentId)
       eliminarTarea(documentId)
     }
   }
 
   const handleCambiarEstado = (documentId: string, estadoActual: boolean | null) => {
     const nuevoEstado = !estadoActual
-    console.log('Cambiando estado de tarea:', documentId, 'de', estadoActual, 'a', nuevoEstado)
     cambiarEstado({ documentId, completada: nuevoEstado })
   }
 
@@ -41,9 +37,9 @@ export default function ListaTareas() {
 
           <p className="text-sm text-gray-600">{tarea.descripcion}</p>
 
-          {tarea.categoria?.nombre && (
-            <p className="text-xs text-blue-600 mt-1">Categoría: {tarea.categoria.nombre}</p>
-          )}
+          <p className="text-sm text-gray-600">
+            {tarea.categoria ? `Categoría: ${tarea.categoria.Nombre}` : 'Sin categoría'}
+          </p>
 
           <p className="text-xs text-gray-400">Deadline: {tarea.deadline}</p>
 

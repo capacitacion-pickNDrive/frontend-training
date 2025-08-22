@@ -4,6 +4,7 @@ import axios from 'axios'
 export interface Categoria {
   id: number
   nombre: string
+  type: string
 }
 
 const fetchCategorias = async (): Promise<Categoria[]> => {
