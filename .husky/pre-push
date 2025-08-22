@@ -12,9 +12,6 @@ if [ "$current_branch" = "main" ] || [ "$current_branch" = "develop" ]; then
     echo "💡 Please create a feature branch and use a pull request:"
     echo "   git checkout -b feature/your-feature-name"
     echo "   git push origin feature/your-feature-name"
-    echo ""
-    echo "🔧 To bypass this check (only if you know what you're doing):"
-    echo "   git push --no-verify"
     exit 1
 fi
 
@@ -24,9 +21,6 @@ if ! pnpm run format:check; then
     echo "❌ Code is not properly formatted!"
     echo "💡 Run the following command to fix formatting:"
     echo "   pnpm run format"
-    echo ""
-    echo "🔧 To bypass this check:"
-    echo "   git push --no-verify"
     exit 1
 fi
 
@@ -35,9 +29,14 @@ echo "🔍 Checking for ESLint errors..."
 if ! pnpm run lint; then
     echo "❌ ESLint errors found!"
     echo "💡 Fix the errors above or run 'pnpm run lint' to auto-fix them"
-    echo ""
-    echo "🔧 To bypass this check:"
-    echo "   git push --no-verify"
+    exit 1
+fi
+
+# Check if build passes
+echo "🏗️ Checking if build passes..."
+if ! pnpm run build; then
+    echo "❌ Build failed!"
+    echo "💡 Fix the build errors before pushing"
     exit 1
 fi
 

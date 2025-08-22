@@ -60,17 +60,14 @@ export const TasksPage = () => {
             <CardHeader>
               <CardTitle className="line-clamp-2">{task.title}</CardTitle>
               <CardDescription>
-                ID: {task.id}
-                <p className="text-sm text-muted-foreground line-clamp-3">{task.description}</p>
+              <p className="text-sm text-muted-foreground line-clamp-3">{task.description}</p>
+              <div>ID: {task.id}</div>
+              <div>Category: {<span style={{ color: task.category.color }}>{task.category.name}</span>}</div>
+              <div>{task.completed ? <span>Completed</span> : <span>Pending</span>}</div>
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div>
-                Category: {<span style={{ color: task.category.color }}>{task.category.name}</span>}
-              </div>
-              <div>
-                {task.completed ? <span>Completed</span> : <span>Pending</span>}
-              </div>
+              
             </CardContent>
           </Card>
         ))}
