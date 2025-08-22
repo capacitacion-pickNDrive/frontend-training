@@ -40,6 +40,11 @@ export default function ListaTareas() {
           <p className="text-sm text-gray-600">
             {tarea.categoria ? `Categoría: ${tarea.categoria.Nombre}` : 'Sin categoría'}
           </p>
+          <p className="text-sm text-gray-600">
+            {tarea.categoria
+              ? `Prioridad: ${tarea.categoria.Prioridad}`
+              : 'Sin prioridad establecida'}
+          </p>
 
           <p className="text-xs text-gray-400">Deadline: {tarea.deadline}</p>
 
