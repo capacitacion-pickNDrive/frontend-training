@@ -58,8 +58,8 @@ export const useCrearTarea = () => {
 export const useCambiarEstadoTarea = () => {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: async ({ id, completada }: { id: number; completada: boolean }) => {
-      await axios.post(`http://localhost:1337/api/tareas/${id}`, { data: { completada } })
+    mutationFn: async ({ documentId, completada }: { documentId: string; completada: boolean }) => {
+      await axios.put(`http://localhost:1337/api/tareas/${documentId}`, { data: { completada } }) //funciona con put, no con post (genera una tarea nueva)
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['tareas'] }),
     onError: error => console.error('Error al cambiar estado de tarea:', error),
