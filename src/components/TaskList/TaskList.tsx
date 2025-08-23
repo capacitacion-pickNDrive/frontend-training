@@ -13,9 +13,18 @@ export function TaskList() {
       {tasks.map((categoria: any) => (
         <div key={categoria.id}>
           <h2 className="font-semibold mb-2">{categoria.nombre}</h2>
-          {/* Si tienes un array de tareas, mapea aquí. Ejemplo: categoria.tareas?.map(...) */}
-          {/* Si no hay tareas, muestra un mensaje */}
-          <p className="text-sm text-muted">No hay tareas en esta categoría.</p>
+          <div className="grid gap-4">
+            {categoria.tareas && categoria.tareas.length > 0 ? (
+              categoria.tareas.map((tarea: any) => (
+                <div key={tarea.id} className="p-4 border rounded">
+                  <h3 className="font-bold">{tarea.titulo}</h3>
+                  {/* Otros campos de la tarea si existen */}
+                </div>
+              ))
+            ) : (
+              <p className="text-sm text-muted">No hay tareas en esta categoría.</p>
+            )}
+          </div>
         </div>
       ))}
     </div>
