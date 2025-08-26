@@ -2,7 +2,8 @@ export interface Tarea {
   id: number
   attributes: {
     titulo: string
-    // otros campos de tarea si existen
+    completada: boolean // <- Asegúrate de que exista
+    // otros campos...
   }
 }
 
