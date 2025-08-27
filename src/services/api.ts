@@ -10,6 +10,8 @@ const api = axios.create({
   },
 })
 
+export default api
+
 // API endpoints
 export const apiService = {
   // Fetch all posts
