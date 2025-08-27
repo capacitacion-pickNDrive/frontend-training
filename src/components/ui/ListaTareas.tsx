@@ -1,6 +1,6 @@
 import { useTareas, useEliminarTarea, useCambiarEstadoTarea } from '@/hooks/useTareas'
 
-export default function ListaTareas() {
+export function ListaTareas() {
   const { data: tareas, isLoading, isError } = useTareas()
   const { mutate: eliminarTarea, isPending: eliminando } = useEliminarTarea()
   const { mutate: cambiarEstado, isPending: cambiandoEstado } = useCambiarEstadoTarea()

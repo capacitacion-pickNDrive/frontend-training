@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useCrearTarea } from '@/hooks/useTareas'
 
-export default function FormularioTarea() {
+export function FormularioTarea() {
   const [titulo, setTitulo] = useState('')
   const [descripcion, setDescripcion] = useState('')
   const [completada, setCompletada] = useState(false)
