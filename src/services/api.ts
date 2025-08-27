@@ -1,37 +1,60 @@
 import axios from 'axios'
 import type { Post } from '@/types/api'
 
-// Base API configuration
-const api = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
+// ==========================
+// Axios Instances
+// ==========================
+
+// API general (posts)
+const postsApi = axios.create({
+  baseURL: 'http://localhost:1337/api', // raíz general
   timeout: 10000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  headers: { 'Content-Type': 'application/json' },
 })
 
-export default api
+// API de autenticación (login/register)
+const authApi = axios.create({
+  baseURL: 'http://localhost:1337/api/auth/local',
+  timeout: 10000,
+  headers: { 'Content-Type': 'application/json' },
+})
 
-// API endpoints
-export const apiService = {
-  // Fetch all posts
+// ==========================
+// Posts Service
+// ==========================
+export const postsService = {
   getPosts: async (): Promise<Post[]> => {
-    const response = await api.get<Post[]>('/posts')
-    return response.data
+    const { data } = await postsApi.get('/posts')
+    return data
   },
 
-  // Fetch a single post by ID
   getPost: async (id: number): Promise<Post> => {
-    const response = await api.get<Post>(`/posts/${id}`)
-    return response.data
+    const { data } = await postsApi.get(`/posts/${id}`)
+    return data
   },
 
-  // Delete product by documentId
-  deletePost: async (documentId: string) => {
-    const { data } = await api.delete(`/posts/${documentId}`)
+  deletePost: async (id: string) => {
+    const { data } = await postsApi.delete(`/posts/${id}`)
     return data
   },
 }
 
-// Export the axios instance for custom requests if needed
-export { api }
+// ==========================
+// Auth Service
+// ==========================
+export const authService = {
+  login: async (email: string, password: string) => {
+    const { data } = await authApi.post('/', { identifier: email, password })
+    return data
+  },
+
+  register: async (username: string, email: string, password: string) => {
+    const { data } = await authApi.post('/register', { username, email, password })
+    return data
+  },
+}
+
+// ==========================
+// Export Axios Instances (opcional)
+// ==========================
+export default { postsApi, authApi }
