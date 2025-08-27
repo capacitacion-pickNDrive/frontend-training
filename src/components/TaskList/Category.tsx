@@ -1,4 +1,3 @@
-// src/components/Category/Category.tsx
 import type { Categoria } from '@/types/strapi'
 
 interface CategoryProps {
@@ -8,9 +7,9 @@ interface CategoryProps {
 export function Category({ categoria }: CategoryProps) {
   return (
     <div>
-      <h2>{categoria.attributes.nombre}</h2>
-      {categoria.attributes.tareas.data.map(tarea => (
-        <div key={tarea.id}>{tarea.attributes.titulo}</div>
+      <h2>{categoria.nombre}</h2>
+      {categoria.tareas?.data?.map(tarea => (
+        <div key={tarea.documentId}>{tarea.titulo}</div>
       ))}
     </div>
   )

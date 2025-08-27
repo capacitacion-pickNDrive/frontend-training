@@ -1,19 +1,20 @@
 export interface Tarea {
   id: number
-  attributes: {
-    titulo: string
-    completada: boolean // <- Asegúrate de que exista
-    // otros campos...
-  }
+  documentId: string
+  titulo: string
+  descripcion: string
+  completada: boolean
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
 }
 
 export interface Categoria {
   id: number
-  attributes: {
-    nombre: string
-    tareas: {
-      data: Tarea[]
-    }
-    // otros campos de categoria si existen
+  documentId: string
+  nombre: string
+  tareas?: {
+    data: Tarea[]
   }
+  // otros campos de categoria si existen
 }

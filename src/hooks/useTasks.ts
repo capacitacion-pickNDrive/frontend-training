@@ -12,7 +12,7 @@ export function useTasks() {
     const fetchTasks = async () => {
       try {
         setLoading(true)
-        const response = await fetch(`${API_URL}/api/categorias?populate=tareas`)
+        const response = await fetch(`${API_URL}/api/categorias?populate[tareas][populate]=*`)
         if (!response.ok) throw new Error(`Error HTTP: ${response.status}`)
         const jsonResponse = await response.json()
         setTasks(jsonResponse.data)

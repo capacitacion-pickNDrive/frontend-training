@@ -1,4 +1,3 @@
-// src/hooks/useCategories.ts
 import { useState, useEffect } from 'react'
 import type { Categoria } from '@/types/strapi'
 
@@ -13,7 +12,7 @@ export function useCategories() {
     const fetchCategories = async () => {
       try {
         setLoading(true)
-        const response = await fetch(`${API_URL}/api/categorias?populate=tareas`)
+        const response = await fetch(`${API_URL}/api/categorias?populate[tareas][populate]=*`)
         if (!response.ok) throw new Error(`Error HTTP: ${response.status}`)
         const jsonResponse = await response.json()
         setCategories(jsonResponse.data)
