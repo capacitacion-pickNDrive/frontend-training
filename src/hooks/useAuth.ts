@@ -1,39 +1,23 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useRouter } from '@tanstack/react-router' // Para TanStack Router
-// O si usas React Router: import { useNavigate } from 'react-router-dom'
+import { useRouter } from '@tanstack/react-router'
 import { login, register } from '@/services/api'
 
 export function useLogin() {
   const qc = useQueryClient()
-  const router = useRouter() // Para TanStack Router
-  // O si usas React Router: const navigate = useNavigate()
+  const router = useRouter()
 
   return useMutation({
-    mutationFn: ({ identifier, password }: { identifier: string; password: string }) => {
-      console.log('🚀 useLogin mutation called with:', {
-        identifier,
-        passwordLength: password.length,
-      })
-      return login(identifier, password)
-    },
+    mutationFn: ({ identifier, password }: { identifier: string; password: string }) =>
+      login(identifier, password),
     onSuccess: ({ jwt, user }) => {
-      console.log('🎉 useLogin onSuccess:', {
-        jwt: jwt ? 'received' : 'missing',
-        user: user ? user.email || user.username : 'missing',
-      })
-
-      // Guardar token
+      // Guardar token y datos del usuario
       localStorage.setItem('token', jwt)
       qc.setQueryData(['me'], user)
 
-      // AGREGAR NAVEGACIÓN
-      // Para TanStack Router:
-      router.navigate({ to: '/tareas' }) // o la ruta que corresponda
+      console.log('✅ Login data saved successfully')
 
-      // Para React Router:
-      // navigate('/tasks') // o la ruta que corresponda
-
-      console.log('🔄 Redirecting to tasks...')
+      // 🚀 Navegar a /tareas
+      router.navigate({ to: '/tareas' })
     },
     onError: (error: any) => {
       console.error('💥 useLogin onError:', {
@@ -48,8 +32,7 @@ export function useLogin() {
 
 export function useRegister() {
   const qc = useQueryClient()
-  const router = useRouter() // Para TanStack Router
-  // O si usas React Router: const navigate = useNavigate()
+  const router = useRouter()
 
   return useMutation({
     mutationFn: ({
@@ -60,40 +43,18 @@ export function useRegister() {
       username: string
       email: string
       password: string
-    }) => {
-      console.log('🚀 useRegister mutation called with:', {
-        username,
-        email,
-        passwordLength: password.length,
-      })
-      return register(username, email, password)
-    },
+    }) => register(username, email, password),
     onSuccess: ({ jwt, user }) => {
-      console.log('🎉 useRegister onSuccess:', {
-        jwt: jwt ? 'received' : 'missing',
-        user: user ? user.email || user.username : 'missing',
-      })
-
-      // Guardar token
       localStorage.setItem('token', jwt)
       qc.setQueryData(['me'], user)
 
-      // AGREGAR NAVEGACIÓN
-      // Para TanStack Router:
-      router.navigate({ to: '/tasks' }) // o la ruta que corresponda
+      console.log('✅ Register data saved successfully')
 
-      // Para React Router:
-      // navigate('/tasks') // o la ruta que corresponda
-
-      console.log('🔄 Redirecting to tasks...')
+      // 🚀 Navegar también a /tareas
+      router.navigate({ to: '/tareas' })
     },
     onError: (error: any) => {
-      console.error('💥 useRegister onError:', {
-        name: error.name,
-        message: error.message,
-        status: error.response?.status,
-        data: error.response?.data,
-      })
+      console.error('💥 useRegister onError:', error)
     },
   })
 }
