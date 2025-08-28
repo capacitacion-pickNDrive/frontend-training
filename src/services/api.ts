@@ -1,16 +1,17 @@
 import axios from 'axios'
-import type { Post, Task, Category } from '@/types/api'
+import type { Post, Task, Category, TaskCreation, TaskUpdate } from '@/types/api'
 
-const api_token = "bcadf2a8f0affa1f3cb8e42779ca408103213c9b1c24f43b0ac1f8e1ffa5e21bd2b260d9afc34c048a10476be6244982b7af46565d2ccd48e8f4304af70a55743b96471bd2d41d2396439f108b909fa6024f80b5bcc613156d763fe9e935f4b364eeca6b38fc0d797427cf531e0d1c648e1970b3e3832fdf27bed5cacc39d9bd";
+const api_token =
+  'bcadf2a8f0affa1f3cb8e42779ca408103213c9b1c24f43b0ac1f8e1ffa5e21bd2b260d9afc34c048a10476be6244982b7af46565d2ccd48e8f4304af70a55743b96471bd2d41d2396439f108b909fa6024f80b5bcc613156d763fe9e935f4b364eeca6b38fc0d797427cf531e0d1c648e1970b3e3832fdf27bed5cacc39d9bd'
 
 // Base API configuration
 const api = axios.create({
-  baseURL: "http://localhost:1337/api",
+  baseURL: 'http://localhost:1337/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${api_token}`
-  }
+    Authorization: `Bearer ${api_token}`,
+  },
 })
 
 // API endpoints
@@ -30,13 +31,31 @@ export const apiService = {
 
   getTasks: async (): Promise<Task[]> => {
     const response = await api.get('/tasks?populate=category')
+    //console.log('Respuesta completa:', response.data) // ← Agrega esto
+    //console.log('Data array:', response.data.data)    // ← Y esto
     return response.data.data
   },
 
   getCategories: async (): Promise<Category[]> => {
     const response = await api.get('/categories')
     return response.data.data
-  }
+  },
+
+  createTask: async (newTask: TaskCreation): Promise<TaskCreation> => {
+    const response = await api.post('/tasks', { data: newTask })
+    return response.data
+  },
+
+  deleteTask: async (taskId: string): Promise<void> => {
+    await api.delete(`/tasks/${taskId}`) // documendId instead of id
+  },
+
+  updateTask: async (data: TaskUpdate): Promise<TaskCreation> => {
+    const response = await api.put(`/tasks/${data.documentId}`, {
+      data: { completed: data.completed },
+    })
+    return response.data
+  },
 }
 
 // Export the axios instance for custom requests if needed

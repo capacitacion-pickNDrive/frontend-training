@@ -76,6 +76,7 @@ declare module '@tanstack/react-router' {
       fullPath: '/tasks'
       preLoaderRoute: typeof TasksRouteImport
       parentRoute: typeof rootRouteImport
+    }
     '/playground': {
       id: '/playground'
       path: '/playground'
@@ -106,6 +107,7 @@ const rootRouteChildren: RootRouteChildren = {
   TasksRoute: TasksRoute,
   PlaygroundRoute: PlaygroundRoute,
 }
+
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()

@@ -6,15 +6,28 @@ export interface Post {
 }
 
 export interface Task {
-  id: number
+  documentId: string
   title: string
   description: string
   completed: boolean
   category: Category
 }
 
+export interface TaskCreation {
+  title: string
+  description: string
+  completed: boolean
+  category: number
+}
+
+export interface TaskUpdate {
+  documentId: string
+  completed: boolean
+}
+
 export interface Category {
   id: number
+  documentId: string
   name: string
   color: string
 }
