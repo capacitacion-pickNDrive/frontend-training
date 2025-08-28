@@ -13,10 +13,10 @@ export const Route = createRootRoute({
             Home
           </Link>
           <Link
-            to="/about"
+            to="/tasks"
             className="px-3 py-2 rounded hover:bg-accent [&.active]:bg-primary [&.active]:text-primary-foreground"
           >
-            About
+            Tasks
           </Link>
           <Link
             to="/playground"
