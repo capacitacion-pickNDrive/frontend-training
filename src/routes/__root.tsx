@@ -19,12 +19,6 @@ export const Route = createRootRoute({
           >
             About
           </Link>
-          <Link
-            to="/tareas"
-            className="px-3 py-2 rounded hover:bg-accent [&.active]:bg-purple-500 [&.active]:text-primary-foreground"
-          >
-            Tareas
-          </Link>
         </nav>
       </header>
 

@@ -2,6 +2,7 @@ import { useLogin } from '@/hooks/useAuth'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useState } from 'react'
+import checkbox from '@/checkbox.png'
 
 export default function LoginPage() {
   const { mutate: login, isPending, isError } = useLogin()
@@ -32,6 +33,10 @@ export default function LoginPage() {
       >
         {isPending ? 'Cargando...' : 'Login'}
       </Button>
+
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <img src={checkbox} styles={{ width: '200px' }} />
+      </div>
     </div>
   )
 }
